@@ -1,0 +1,34 @@
+# 修改启动端口号，默认是8080
+server:
+  port: 8082
+
+# 简单的key : value
+name: zhangyu
+#数组形式,使用 - 来区分不同的元素， 元素可以是基本类型，字符串和对象类型
+cities:
+  - beijing
+  - shenzhen
+  - changsha
+
+#集合类型，元素是复杂的数据类型，eg：List<Student> students;
+students:
+  - name: zhangsan
+    age: 18
+    address: beijing
+
+  - name: lisi
+    age: 19
+    address: shenzhen
+
+  - name: tq
+    age: 20
+    address: changsha
+
+
+# Map集合形式，使用比较少
+maps: {"name": "zhangsan","age": "18"}
+
+#参数引用
+person:
+  name: ${name} # 该值可以获取到上边的name定义的值:zhangyu
+  age: 100
