@@ -1,18 +1,31 @@
 package com.it.controller;
 
 import com.it.pojo.Person;
+import com.it.service.ExportExcelService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
 @RestController
 @RequestMapping("/test")
 public class HelloController {
 
+    @Resource
+    private ExportExcelService exportExcelService;
+
     @RequestMapping("/hello")
-    public String hello(){
+    public String hello(HttpServletResponse response){
+        try {
+            exportExcelService.exportStudentInfoExcel(response);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return "Helle World!";
     }
 
